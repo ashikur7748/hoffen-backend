@@ -16,10 +16,10 @@ class CompanyController extends Controller
 
         if ($companyStore){
             return response()->json([
-                'message'=>'Company Add Successfully!!'
+                'message'=>'Company Add Successfully !!'
             ]);
         }else{
-            return ['massage'=>'Failed to add Company'];
+            return ['massage'=>'Failed to add Company !!'];
         }
 
     }
