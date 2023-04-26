@@ -10,6 +10,7 @@ use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactInfoController;
 
 
 
@@ -45,23 +46,26 @@ Route::post('/emailsend', [EmailSendController::class, 'MailSend']);
 // Distributor
 Route::post('/distributorstore', [DistributorController::class, 'store']);
 Route::get('/distributorlist', [DistributorController::class, 'show']);
-Route::get('/distributoredit/{id}', [DistributorController::class, 'edit']);
-Route::put('/distributorupdate', [DistributorController::class, 'update']);
-Route::delete('/distributordelete/{id}', [DistributorController::class, 'delete']);
+Route::post('/distributoredit', [DistributorController::class, 'edit']);
+Route::post('/distributorupdate', [DistributorController::class, 'update']);
+Route::post('/distributordelete', [DistributorController::class, 'delete']);
 
 // Event
 Route::post('/eventstore', [EventController::class, 'store']);
-Route::get('/eventlist', [EventController::class, 'show']);
-Route::get('/eventedit/{id}', [EventController::class, 'edit']);
-Route::put('eventupdate', [EventController::class, 'update']);
-Route::delete('/eventdelete/{id}', [EventController::class, 'delete']);
+Route::get('/eventshow', [EventController::class, 'show']);
+Route::post('/eventedit', [EventController::class, 'edit']);
+Route::post('eventupdate', [EventController::class, 'update']);
+Route::post('/eventdelete', [EventController::class, 'delete']);
 
 // News
 Route::post('/newsstore', [NewsController::class, 'store']);
-Route::get('/newslist', [NewsController::class, 'show']);
-Route::get('/newsedit/{id}', [NewsController::class, 'edit']);
-Route::put('/newsupdate', [NewsController::class, 'update']);
-Route::delete('/newsdelete/{id}', [NewsController::class, 'delete']);
+Route::get('/newsshow', [NewsController::class, 'show']);
+Route::post('/newsedit', [NewsController::class, 'edit']);
+Route::post('/newsupdate', [NewsController::class, 'update']);
+Route::post('/newsdelete', [NewsController::class, 'delete']);
+
+// Contact Info
+Route::get('/contactinfoshow', [ContactInfoController::class, 'show']);
 
 
 

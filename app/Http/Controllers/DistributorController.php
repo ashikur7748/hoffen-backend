@@ -29,9 +29,9 @@ class DistributorController extends Controller
         }
     }
 
-    public function edit ($id){
+    public function edit (Request $request){
         try {
-
+            return Distributor::where('id',$request->id)->get();
         } catch(\Exception $e) {
             return $e->getMessage();
         }
@@ -39,7 +39,14 @@ class DistributorController extends Controller
 
     public function update (Request $request){
         try {
-
+            Distributor::where('id', $request->id)
+                ->update([
+                    'distributor_name' => $request->distributor_name,
+                    'person' => $request->person,
+                    'mobile' => $request->mobile,
+                    'email' => $request->email,
+                    'social_media' => $request->social_media,
+                ]);
         } catch(\Exception $e) {
             return $e->getMessage();
         }
@@ -47,7 +54,7 @@ class DistributorController extends Controller
 
     public function delete (Request $request){
         try {
-
+            Distributor::where('id', $request->id)->delete();
         } catch(\Exception $e) {
             return $e->getMessage();
         }

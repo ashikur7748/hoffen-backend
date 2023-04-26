@@ -52,13 +52,11 @@ class ProductController extends Controller
 
 
 public function OrderListShow(){
-
-    $OrderList = Order::all();
-
-    return response()->json([
-        'status' => 200,
-        'OrderList' => $OrderList,
-    ]);
+    try {
+        return Order::all();
+    } catch(\Exception $e) {
+        return $e->getMessage();
+    }
 
 }
 
