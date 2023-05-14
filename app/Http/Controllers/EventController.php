@@ -10,6 +10,14 @@ use App\Models\Event;
 
 class EventController extends Controller
 {
+    public function show (){
+        try {
+            return Event::all();
+        } catch(\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function store (Request $request){
         try {
             $file = $request->file('image');
@@ -23,14 +31,6 @@ class EventController extends Controller
                 'description' => $request->description,
                 'image' => $imageName,
             ]);
-        } catch(\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function show (){
-        try {
-            return Event::all();
         } catch(\Exception $e) {
             return $e->getMessage();
         }

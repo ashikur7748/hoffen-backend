@@ -9,8 +9,10 @@ use App\Http\Controllers\EmailSendController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactInfoController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\OrderController;
 
 
 
@@ -27,18 +29,11 @@ use App\Http\Controllers\ContactInfoController;
 //Route::post('/login', [LoginController::class, 'Login']);
 //Route::post('/logout', [LoginController::class, 'Logout']);
 //Route::post('/userregister', [RegisterController::class, 'Register']);
+
 // Login & Register
 Route::post('/userauthentication', [LoginController::class, 'Login']);
 Route::post('/userlogout', [LoginController::class, 'Logout']);
 Route::post('/userregister', [RegisterController::class, 'Register']);
-
-// Products
-Route::post('/companyadd', [CompanyController::class, 'AddCompany']);
-Route::post('/categoryadd', [ProductController::class, 'AddCategory']);
-
-Route::post('/productadd', [ProductController::class, 'AddProduct']);
-Route::post('/orderproduct', [ProductController::class, 'OrderNow']);
-Route::get('/orderlistfetch', [ProductController::class, 'OrderListShow']);
 
 //Email
 Route::post('/emailsend', [EmailSendController::class, 'MailSend']);
@@ -63,6 +58,37 @@ Route::get('/newsshow', [NewsController::class, 'show']);
 Route::post('/newsedit', [NewsController::class, 'edit']);
 Route::post('/newsupdate', [NewsController::class, 'update']);
 Route::post('/newsdelete', [NewsController::class, 'delete']);
+
+// Category
+Route::post('/categorystore', [CategoryController::class, 'store']);
+Route::get('/categoryshow', [CategoryController::class, 'show']);
+Route::post('/categoryedit', [CategoryController::class, 'edit']);
+Route::post('/categoryupdate', [CategoryController::class, 'update']);
+Route::post('/categorydelete', [CategoryController::class, 'delete']);
+
+// Sub Category
+Route::post('/subcategorystore', [SubCategoryController::class, 'store']);
+Route::get('/subcategoryshow', [SubCategoryController::class, 'show']);
+Route::post('/subcategoryedit', [SubCategoryController::class, 'edit']);
+Route::post('/subcategoryupdate', [SubCategoryController::class, 'update']);
+Route::post('/subcategorydelete', [SubCategoryController::class, 'delete']);
+
+// Products
+Route::post('/productstore', [ProductController::class, 'store']);
+Route::get('/productshow', [ProductController::class, 'show']);
+Route::post('/productedit', [ProductController::class, 'edit']);
+Route::post('/productupdate', [ProductController::class, 'update']);
+Route::post('/productdelete', [ProductController::class, 'delete']);
+Route::post('/productcategorywiseshow', [ProductController::class, 'CategoryWiseShowProduct']);
+Route::post('/productsubcategorywiseshow', [ProductController::class, 'SubCategoryWiseShowProduct']);
+Route::post('/productsubcategorywisefilter', [ProductController::class, 'FilterProductSubCategoryWise']);
+Route::post('/productsubcategorylist', [ProductController::class, 'SubCategoryList']);
+
+
+// Order
+Route::get('/orderlistfetch', [OrderController::class, 'show']);
+Route::post('/orderproduct', [OrderController::class, 'OrderNow']);
+
 
 // Contact Info
 Route::get('/contactinfoshow', [ContactInfoController::class, 'show']);
